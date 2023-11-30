@@ -1,5 +1,3 @@
-import org.w3c.dom.traversal.NodeFilter;
-
 public class LinkedList <T>{
         private Node<T> head;
 
