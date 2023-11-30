@@ -13,6 +13,9 @@ public class Main {
         System.out.println("LinkedList after Popping: ");
         LL.print();
 
+        System.out.println("Linked List Searching for node 30: "+ LL.search(30));
+
+
     }
 
 }

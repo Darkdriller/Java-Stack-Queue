@@ -103,4 +103,17 @@ public class LinkedList <T>{
                 }
             }
         }
+
+    public Boolean search(T target) {
+        Node<T> current = head;
+        while (current != null) {
+            if (current.getData().equals(target)) {
+                // Node with the target value found
+                return true;
+            }
+            current = current.getNext();
+        }
+        // Target value not found in the list
+        return false;
+    }
 }
