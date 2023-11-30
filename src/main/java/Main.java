@@ -4,7 +4,7 @@ public class Main {
         LinkedList LL = new LinkedList();
         LL.add(70);
         LL.add(56);
-        LL.addAfter(30,70);
+        LL.add(30);
 
         System.out.println("LinkedList before Popping: ");
         LL.print();

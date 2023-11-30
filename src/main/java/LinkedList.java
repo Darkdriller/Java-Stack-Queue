@@ -1,4 +1,4 @@
-public class LinkedList <T>{
+public class LinkedList <T extends Comparable<T>>{
         private Node<T> head;
 
         public LinkedList(T data){
@@ -11,20 +11,39 @@ public class LinkedList <T>{
         public Node<T> getHead(){
             return this.head ;
         }
-        public void add(T data){
-                Node<T> newNode = new Node<>(data);
+//        public void add(T data){
+//                Node<T> newNode = new Node<>(data);
+//
+//                if (this.head == null){
+//                    this.head = newNode;
+//                }
+//                else{
+//                    Node<T> current = this.head;
+//                    while(current.getNext() != null){
+//                        current = current.getNext();
+//                    }
+//                    current.setNext(newNode);
+//                }
+//            }
 
-                if (this.head == null){
-                    this.head = newNode;
+        public void add(T data) {
+            Node<T> newNode = new Node<>(data);
+
+            if (head == null || data.compareTo(head.getData()) < 0) {
+                newNode.setNext(head);
+                head = newNode;
+            } else {
+                Node<T> current = head;
+                Node<T> prev = null;
+                while (current != null && data.compareTo(current.getData()) >= 0) {
+                    prev = current;
+                    current = current.getNext();
                 }
-                else{
-                    Node<T> current = this.head;
-                    while(current.getNext() != null){
-                        current = current.getNext();
-                    }
-                    current.setNext(newNode);
-                }
+                newNode.setNext(current);
+                prev.setNext(newNode);
             }
+        }
+
         public void addAfter(T data, T key){
             Node<T> newNode = new Node<>(data);
 
