@@ -54,6 +54,17 @@ public class LinkedList <T>{
             }
         }
 
+        public T popFirst(){
+            if (head == null) {
+                // List is empty, nothing to pop
+                return null;
+            }
+
+            T poppedData = head.getData();
+            head = head.getNext();
+            return poppedData;
+        }
+
         public void print(){
             if (head ==  null){
                 System.out.println("Empty");
