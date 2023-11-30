@@ -27,10 +27,22 @@ public class LinkedList <T>{
                     current.setNext(newNode);
                 }
             }
+        public void addAfter(T data, T key){
+            Node<T> newNode = new Node<>(data);
 
-
-
-
+            if (this.head == null){
+                System.out.println("Empty List, Key Not Found");
+            }
+            else{
+                Node<T> current = this.head;
+                while(current.getData() != key && current.getNext()!= null){
+                    current = current.getNext();
+                }
+                Node<T> nextNode = current.getNext();
+                current.setNext(newNode);
+                current.getNext().setNext(nextNode);
+            }
+        }
         public void append(LinkedList<T> LL){
             if (this.head == null){
                 this.head = LL.getHead();
