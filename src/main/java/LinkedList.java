@@ -1,22 +1,46 @@
+import org.w3c.dom.traversal.NodeFilter;
+
 public class LinkedList <T>{
         private Node<T> head;
 
+        public LinkedList(T data){
+            this.head = new Node<>(data);
+        }
         public LinkedList(){
             this.head = null;
         }
 
+        public Node<T> getHead(){
+            return this.head ;
+        }
         public void add(T data){
-            Node<T> newNode = new Node<>(data);
+                Node<T> newNode = new Node<>(data);
 
-            if (head == null){
-                head = newNode;
+                if (this.head == null){
+                    this.head = newNode;
+                }
+                else{
+                    Node<T> current = this.head;
+                    while(current.getNext() != null){
+                        current = current.getNext();
+                    }
+                    current.setNext(newNode);
+                }
+            }
+
+
+
+
+        public void append(LinkedList<T> LL){
+            if (this.head == null){
+                this.head = LL.getHead();
             }
             else{
-                Node<T> current = head;
+                Node<T> current = this.head;
                 while(current.getNext() != null){
                     current = current.getNext();
                 }
-                current.setNext(newNode);
+                current.setNext(LL.getHead());
             }
         }
 
