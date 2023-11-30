@@ -64,8 +64,34 @@ public class LinkedList <T>{
             head = head.getNext();
             return poppedData;
         }
+        public T popLast() {
+            if (head == null) {
+                // List is empty, nothing to pop
+                return null;
+            }
 
-        public void print(){
+            if (head.getNext() == null) {
+                // List has only one element, so pop the head
+                T poppedData = head.getData();
+                head = null;
+                return poppedData;
+            }
+
+            Node<T> current = head;
+            Node<T> prev = null;
+
+            while (current.getNext() != null) {
+                prev = current;
+                current = current.getNext();
+            }
+
+            T poppedData = current.getData();
+            prev.setNext(null);
+
+            return poppedData;
+        }
+
+    public void print(){
             if (head ==  null){
                 System.out.println("Empty");
             }

@@ -8,9 +8,11 @@ public class Main {
 
         System.out.println("LinkedList before Popping: ");
         LL.print();
-        System.out.println("First Element Popped: " + LL.popFirst());
+//        System.out.println("First Element Popped: " + LL.popFirst());
+        System.out.println("Last Element Popped: " + LL.popLast());
         System.out.println("LinkedList after Popping: ");
         LL.print();
+
     }
 
 }
