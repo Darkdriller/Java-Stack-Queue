@@ -1,11 +1,10 @@
-public class LinkedList <T extends Comparable<T>>{
+public class SortedLinkedList <T extends Comparable<T>>{
         private Node<T> head;
 
-        public LinkedList(T data){
+        public SortedLinkedList(T data){
             this.head = new Node<>(data);
         }
-
-        public LinkedList(){
+        public SortedLinkedList(){
             this.head = null;
         }
 
@@ -13,25 +12,22 @@ public class LinkedList <T extends Comparable<T>>{
             return this.head ;
         }
 
-        public void add(T data){
-                Node<T> newNode = new Node<>(data);
-
-                if (this.head == null){
-                    this.head = newNode;
-                }
-                else{
-                    Node<T> current = this.head;
-                    while(current.getNext() != null){
-                        current = current.getNext();
-                    }
-                    current.setNext(newNode);
-                }
-            }
-        public void addFirst(T data){
+        public void add(T data) {
             Node<T> newNode = new Node<>(data);
-            Node<T> temp = this.head;
-            this.head = newNode;
-            newNode.setNext(temp);
+
+            if (head == null || data.compareTo(head.getData()) < 0) {
+                newNode.setNext(head);
+                head = newNode;
+            } else {
+                Node<T> current = head;
+                Node<T> prev = null;
+                while (current != null && data.compareTo(current.getData()) >= 0) {
+                    prev = current;
+                    current = current.getNext();
+                }
+                newNode.setNext(current);
+                prev.setNext(newNode);
+            }
         }
 
         public void addAfter(T data, T key){
@@ -62,20 +58,7 @@ public class LinkedList <T extends Comparable<T>>{
                 current.setNext(LL.getHead());
             }
         }
-        public int len(){
-            if (this.head == null){
-                return 0;
-            }
-            else{
-                int size=0;
-                Node<T> current = this.head;
-                while(current.getNext() != null){
-                    size+=1;
-                    current = current.getNext();
-                }
-                return size;
-            }
-        }
+
         public T popFirst(){
             if (head == null) {
                 // List is empty, nothing to pop
@@ -113,7 +96,7 @@ public class LinkedList <T extends Comparable<T>>{
             return poppedData;
         }
 
-    public void print(){
+        public void print(){
             if (head ==  null){
                 System.out.println("Empty");
             }
@@ -126,16 +109,16 @@ public class LinkedList <T extends Comparable<T>>{
             }
         }
 
-    public Boolean search(T target) {
-        Node<T> current = head;
-        while (current != null) {
-            if (current.getData().equals(target)) {
-                // Node with the target value found
-                return true;
+        public Boolean search(T target) {
+            Node<T> current = head;
+            while (current != null) {
+                if (current.getData().equals(target)) {
+                    // Node with the target value found
+                    return true;
+                }
+                current = current.getNext();
             }
-            current = current.getNext();
+            // Target value not found in the list
+            return false;
         }
-        // Target value not found in the list
-        return false;
-    }
 }

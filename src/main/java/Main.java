@@ -1,7 +1,8 @@
+
 public class Main {
 
     public static void main(String[] args) {
-        LinkedList LL = new LinkedList();
+        SortedLinkedList LL = new SortedLinkedList();
         LL.add(70);
         LL.add(56);
         LL.add(30);
@@ -14,6 +15,17 @@ public class Main {
         LL.print();
 
         System.out.println("Linked List Searching for node 30: "+ LL.search(30));
+
+        Stack S = new Stack();
+        for (int i : new int[]{70, 30, 56}) {
+            S.push(i);
+        }
+        System.out.println("Top of Stack is: " + S.peek());
+        S.pop();
+        System.out.println("Top of Stack is: " + S.peek());
+        S.pop();
+        System.out.println("Top of Stack is: " + S.peek());
+        S.pop();
 
 
     }
