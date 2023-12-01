@@ -27,7 +27,14 @@ public class Main {
         System.out.println("Top of Stack is: " + S.peek());
         S.pop();
 
-
+        Queue q = new Queue();
+        for (int i : new int[]{56, 30, 70}) {
+            q.enqueue(i);
+        }
+        q.print();
+        System.out.println("Front of Queue is: " + q.dequeue());
+        System.out.println("Front of Queue is: " + q.dequeue());
+        System.out.println("Front of Queue is: " + q.dequeue());
     }
 
 }
